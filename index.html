@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Hipotenusa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #calculator {
+      position: relative;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      font-weight: bold;
+      color: #4caf50;
+    }
+
+    #triangle {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 50px solid #4caf50; /* Cambia el color del triángulo según tus preferencias */
+    }
+
+    #image {
+      width: 100%; /* Ajusta el ancho de la imagen */
+      height: 130px; /* Ajusta la altura de la imagen */
+      position: absolute;
+      top: -100px; /* Ajusta la posición vertical de la imagen */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <div id="triangle"></div>
+  <img id="image" src="https://i.pinimg.com/originals/b9/ac/ca/b9accacf18baefeeb4ae41f577097993.jpg" alt="Triángulo">
+  <h2>Calculadora de Hipotenusa</h2>
+  <label for="catetoA">Longitud del Cateto A:</label>
+  <input type="number" id="catetoA" placeholder="Ingrese la longitud del cateto A" required>
+
+  <label for="catetoB">Longitud del Cateto B:</label>
+  <input type="number" id="catetoB" placeholder="Ingrese la longitud del cateto B" required>
+
+  <button onclick="calcularHipotenusa()">Calcular</button>
+
+  <p id="result">Resultado: </p>
+</div>
+
+<script>
+  function calcularHipotenusa() {
+    var catetoA = parseFloat(document.getElementById('catetoA').value);
+    var catetoB = parseFloat(document.getElementById('catetoB').value);
+
+    if (!isNaN(catetoA) && !isNaN(catetoB)) {
+      var hipotenusa = Math.sqrt(catetoA * catetoA + catetoB * catetoB);
+      document.getElementById('result').innerText = 'Resultado: ' + hipotenusa.toFixed(2);
+    } else {
+      document.getElementById('result').innerText = 'Por favor, ingrese números válidos.';
+    }
+  }
+</script>
+
+</body>
+</html>
